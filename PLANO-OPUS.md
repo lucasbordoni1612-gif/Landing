@@ -9,6 +9,21 @@ Vai para o Opus o que tem estas características:
 - O erro aparece na hora, na tela ou num teste.
 - É volume de telas e formulários, não investigação.
 
+## Esforço recomendado
+
+- **Padrão: alto (high).** O padrão de fábrica do Opus é médio, então é preciso subir manualmente. Para escrever código, o alto reduz erros sem pesar muito no custo.
+- **Médio** serve para tarefas mecânicas: textos de tradução, ajustes de estilo, telas repetidas a partir de uma já pronta.
+- **Extra (xhigh)** não é necessário. Se uma tarefa do Opus parecer pedir extra, é sinal de que ela pertence ao arquivo do Fable.
+
+## Ordem de uso
+
+O Fable entra antes do Opus em três pontos, porque o Opus constrói em cima do que ele define:
+1. Etapa 1 inteira (Fable), antes de qualquer código do produto.
+2. Desenho da etapa 2 (Fable), depois a implementação (Opus).
+3. Etapa 4 inteira (Fable), antes da etapa 8 (Opus), que consome o formato de evento.
+
+A etapa 0 (protótipo) é do Opus e não depende de nada disso.
+
 ## Partes
 
 ### Etapa 0: identidade e protótipo (inteira)

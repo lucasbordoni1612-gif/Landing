@@ -10,6 +10,12 @@ Vai para o Fable o que tem pelo menos uma destas características:
 - Segurança de credenciais.
 - Texto de instrução cuja qualidade define o acerto dos módulos.
 
+## Esforço recomendado
+
+- **Padrão: alto (high).** É o ponto de partida indicado para o Fable; acima disso o ganho é irregular.
+- **Extra (xhigh)** só em dois lugares, onde um erro passa despercebido por mais tempo: a etapa 1 (prova técnica) e o isolamento do Orquestrador na etapa 9.
+- **Médio não é recomendado aqui.** Estas são justamente as partes em que economizar raciocínio sai caro.
+
 ## Partes
 
 ### Etapa 1: prova técnica (inteira)

@@ -90,6 +90,16 @@ Tudo roda na CI do próprio cliente, inclusive os menus manuais e os módulos av
 - Nível de permissão: **leitura** (valida e reporta) ou **desenvolvimento** (altera código).
 - Ferramentas exigidas, como navegador.
 - Tipo: de esteira ou avulso.
+- Modelo padrão: Opus ou Fable, definido pelo criador do módulo. Quem monta o menu pode trocar.
+
+**Modelo padrão de cada módulo:**
+
+| Módulo | Modelo | Motivo |
+|---|---|---|
+| QA, UX, Design, Pré-app | Opus | Validam, reportam ou prototipam, e um erro aparece no relatório ou na tela. |
+| Módulos de desenvolvimento e Tech Lead | Fable | Escrevem ou aprovam código do cliente, e precisam acertar de primeira. |
+
+O Fable consome o limite da assinatura mais rápido que o Opus. Falta confirmar quais planos da assinatura Claude dão acesso a cada modelo; isso entra na prova técnica da etapa 1. O botão "Testar" do estúdio permite rodar o mesmo rascunho nos dois modelos e comparar antes de publicar.
 
 **Regras:**
 - Só contas com permissão de criador criam e publicam módulos.

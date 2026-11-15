@@ -101,6 +101,26 @@ Tudo roda na CI do próprio cliente, inclusive os menus manuais e os módulos av
 
 O Fable consome o limite da assinatura mais rápido que o Opus. Falta confirmar quais planos da assinatura Claude dão acesso a cada modelo; isso entra na prova técnica da etapa 1. O botão "Testar" do estúdio permite rodar o mesmo rascunho nos dois modelos e comparar antes de publicar.
 
+**Sugestão de modelo no estúdio.** Ao criar um módulo, o estúdio já sugere o modelo, em dois momentos:
+1. Antes do teste, pela permissão: leitura sugere Opus, desenvolvimento sugere Fable.
+2. Depois do teste nos dois modelos, pelo resultado: mostra o acerto e o consumo de cada um e recomenda o mais barato que atingiu o acerto exigido.
+
+### 3.5.1 Economia de tokens
+
+Medidas que entram na primeira versão, da mais barata de fazer para a mais trabalhosa:
+
+| Medida | O que faz |
+|---|---|
+| **Checagens sem IA primeiro** | Lint, testes e as regras automáticas (como as 62 do `impeccable`) rodam antes do agente. Se já barrarem, o agente nem inicia. |
+| **Foco no que mudou** | O agente recebe o diff do MR e a descrição, em vez de explorar o repositório inteiro. |
+| **Não repetir trabalho** | Se o commit não mudou desde a última execução, o menu reaproveita o resultado. |
+| **Teto por execução** | Cada menu tem um limite de rodadas do agente. Ao atingir, ele para e reporta. |
+| **Nível de esforço por módulo** | Além do modelo, o módulo define o esforço de raciocínio. Tarefas simples rodam com esforço baixo. |
+| **Mapa do repositório** | Um índice do código, gerado uma vez e atualizado a cada MR, que o agente consulta em vez de ler arquivos. O Graphify é o candidato; ele ajuda na leitura, não na edição. |
+| **Consumo visível** | O painel mostra quanto cada menu e cada módulo gastou, para o dono ver onde cortar. |
+
+O ganho do Graphify precisa ser medido nos projetos do dono na etapa 1. O número divulgado, 71 vezes menos tokens, vem de um único teste num repositório grande; relatos de uso falam em 5 a 10 vezes na exploração, e o ganho é pequeno em repositórios com menos de 100 arquivos. A licença também precisa ser conferida no repositório dele.
+
 **Regras:**
 - Só contas com permissão de criador criam e publicam módulos.
 - Todo módulo publicado vai para um catálogo único, visível a todas as contas.

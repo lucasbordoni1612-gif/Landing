@@ -169,7 +169,20 @@ O ganho do Graphify precisa ser medido nos projetos do dono na etapa 1. O númer
 
 Quando um menu precisa de uma pessoa (por exemplo, aprovar o design), o job termina no estado "aguardando aprovação". Ao aprovar, a plataforma dispara a etapa seguinte. Assim nenhum runner fica ligado gastando minutos enquanto espera alguém.
 
-### 4.4 Cuidados técnicos já conhecidos
+### 4.4 Várias pessoas ao mesmo tempo
+
+| Situação | Como o produto trata |
+|---|---|
+| Várias pessoas abrindo MRs no mesmo repositório | Cada MR tem a sua própria execução, isolada das outras. |
+| Pessoa faz push enquanto o menu ainda roda no mesmo MR | A execução antiga é cancelada e uma nova começa no commit mais recente. O resultado sempre se refere ao último commit. |
+| Módulo de desenvolvimento e pessoa mexendo na mesma branch | Antes do push, o agente confere se a branch mudou. Se mudou, ele não força nada: refaz a correção em cima do código novo. Nunca usa push forçado. |
+| Dois MRs aprovados separadamente que quebram juntos | O menu pode exigir que o MR esteja atualizado com a branch principal antes de aprovar, usando o recurso do próprio GitHub/GitLab. |
+| Duas pessoas editando o mesmo menu ou módulo no painel | Quem salvar por último é avisado de que houve mudança e vê o que mudou, em vez de apagar o trabalho do outro. |
+| Mais execuções do que o Orquestrador aguenta | As execuções entram numa fila, e o painel mostra a posição. |
+
+Todas as execuções de uma conta consomem a mesma assinatura Claude. Com várias pessoas disparando execuções, o limite acaba mais rápido e volta a dúvida dos termos (seção 10). Por isso, na primeira versão, várias pessoas podem mexer no código e abrir MRs, mas as execuções rodam só nos projetos do dono.
+
+### 4.5 Cuidados técnicos já conhecidos
 
 - Não usar o modo `--bare` do Claude Code: ele não lê o token de assinatura e não executa hooks.
 - O caminho mais confiável para os eventos é ler o `stream-json` e reenviar. Hooks HTTP servem de complemento.

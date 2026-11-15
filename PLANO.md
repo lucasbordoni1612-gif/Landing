@@ -283,6 +283,8 @@ A ordem coloca primeiro o protótipo para os sócios e, logo depois, a prova das
 
 O protótipo é entregue só por link. O dono não tem assento pago no Figma, então não há envio das telas para lá.
 
+É feito para ser simples e rápido: uma página com dados simulados, sem a stack do produto, e descartável. O que passa para o produto real é a identidade visual e o desenho das telas, não o código.
+
 **Pronto quando:** os sócios conseguem abrir o link e percorrer o fluxo de ponta a ponta sem explicação.
 
 ### Etapa 1: prova técnica

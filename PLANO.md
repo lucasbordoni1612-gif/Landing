@@ -146,7 +146,7 @@ Quando um menu precisa de uma pessoa (por exemplo, aprovar o design), o job term
 
 ## 5. Módulos padrão
 
-Os três módulos abaixo saem na primeira versão. O dono pode acrescentar skills a qualquer momento pelo estúdio.
+Os quatro módulos abaixo saem na primeira versão. O dono pode acrescentar skills a qualquer momento pelo estúdio.
 
 ### 5.1 QA (leitura)
 
@@ -186,6 +186,18 @@ Os três módulos abaixo saem na primeira versão. O dono pode acrescentar skill
 
 **Figma.** "Enviar para o Figma" é um extra opcional, não o padrão. Só funciona para quem tem assento pago e usa o Orquestrador, onde o login do Figma é feito uma vez. O motivo está na seção 10.
 
+### 5.4 Pré-app (avulso)
+
+**O que faz.** Prepara um projeto que ainda não existe, para quem quer começar do zero:
+1. Cria o repositório no GitHub ou GitLab do usuário.
+2. Faz o versionamento inicial.
+3. Instala a configuração de CI e conecta o projeto à plataforma.
+4. Cria os menus padrão do projeto.
+
+**Como roda.** A criação do repositório é feita pela própria plataforma, usando a conexão do usuário, porque nesse momento ainda não existe uma CI onde rodar. Os passos seguintes já rodam na CI do repositório novo.
+
+**O que não faz.** Não escreve o app. Isso é o Criador de Apps (seção 8.3), que parte do repositório preparado pelo Pré-app.
+
 ## 6. Painel ao vivo: o escritório
 
 **A cena:**
@@ -222,20 +234,22 @@ A ordem coloca primeiro o protótipo para os sócios e, logo depois, a prova das
 1. Três direções visuais: cores, tipografia e uma tela de exemplo de cada, todas simples e com o escritório como peça central.
 2. O dono escolhe uma.
 3. Protótipo navegável da experiência completa, aberto por link no navegador:
-   - Primeira versão inteira: Conexões, catálogo, estúdio de módulos, criação de menu, esteira, escritório ao vivo com uma execução simulada, administração e o Orquestrador.
+   - Primeira versão inteira: Conexões, catálogo, estúdio de módulos, criação de menu, esteira, Pré-app, escritório ao vivo com uma execução simulada, administração e o Orquestrador.
    - Uma ou duas telas de cada parte futura, marcadas "em breve": Criador de Apps, Ads, esteiras Dev e Tech Lead.
-4. Envio das telas ao Figma, opcional e sujeito a funcionar.
+
+O protótipo é entregue só por link. O dono não tem assento pago no Figma, então não há envio das telas para lá.
 
 **Pronto quando:** os sócios conseguem abrir o link e percorrer o fluxo de ponta a ponta sem explicação.
 
 ### Etapa 1: prova técnica
 
-Um repositório de teste, sem painel, para tirar as três dúvidas que podem mudar o desenho:
+Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mudar o desenho:
 1. Claude Code oficial com token de assinatura rodando no GitHub Actions, com as skills carregadas e os eventos saindo em `stream-json`.
 2. O mesmo no GitLab CI, onde o token de assinatura não está documentado.
 3. Navegador em modo headless tirando prints e vídeo dentro do job.
+4. Criação de repositório pela conexão do usuário, no GitHub e no GitLab, para o módulo Pré-app.
 
-**Pronto quando:** uma execução de teste em cada provedor entrega eventos e prints num endpoint de teste.
+**Pronto quando:** uma execução de teste em cada provedor entrega eventos e prints num endpoint de teste, e um repositório novo é criado por API em cada um.
 
 ### Etapa 2: fundação
 
@@ -291,8 +305,9 @@ Um repositório de teste, sem painel, para tirar as três dúvidas que podem mud
 - Escrita das três skills próprias.
 - Bateria de testes em projetos de exemplo.
 - Botões "Era isso" e "Não era isso" do UX, e "Aprovar" e "Pedir ajuste" do Design.
+- Módulo Pré-app: criação de repositório, versionamento inicial, configuração de CI e menus padrão.
 
-**Pronto quando:** os três módulos rodam num projeto real do dono e os relatórios fazem sentido para quem não é técnico.
+**Pronto quando:** QA, UX e Design rodam num projeto real do dono com relatórios que fazem sentido para quem não é técnico, e o Pré-app entrega um repositório novo já com a esteira funcionando.
 
 ### Etapa 8: escritório ao vivo
 
@@ -350,9 +365,9 @@ Cada caso que chega ao freio conta como defeito do módulo e pesa na "taxa de ac
 
 ### 8.3 Criador de Apps
 
-**O que é.** Um módulo para quem não tem vivência com tecnologia: a pessoa descreve o app e o módulo cria o repositório, versiona e monta os menus necessários para o desenvolvimento.
+**O que é.** Um módulo para quem não tem vivência com tecnologia: a pessoa descreve o app, o Pré-app prepara o repositório e os menus, e o Criador de Apps desenvolve o app em cima disso.
 
-**Depende de:** módulos de desenvolvimento estáveis e uma forma de a pessoa ver o app rodando sem configurar nada. Precisa ser simples e intuitivo.
+**Depende de:** o Pré-app da primeira versão, módulos de desenvolvimento estáveis e uma forma de a pessoa ver o app rodando sem configurar nada. Precisa ser simples e intuitivo.
 
 ### 8.4 Outros itens adiados
 
@@ -379,16 +394,16 @@ Cada caso que chega ao freio conta como defeito do módulo e pesa na "taxa de ac
 | **App sem assinatura digital** | Bloqueio no macOS, aviso no Windows e possível falso positivo de antivírus. | Aceitável para uso do dono; resolver antes de abrir. |
 | **Skills de terceiros** | Rodam dentro da pipeline do cliente. As escolhidas são MIT ou Apache-2.0; as do Figma não têm licença aberta. | Versão fixada e revisão antes de publicar. |
 | **Evidências** | Prints e eventos passam pelos servidores da plataforma, mesmo com o código ficando no cliente. | Retenção de 30 dias e aviso claro na tela Conexões. |
+| **Permissão para criar repositórios** | O Pré-app precisa que a conexão do usuário permita criar repositórios, o que amplia o acesso pedido no GitHub e no GitLab. | Confirmar na etapa 1 e pedir essa permissão só a quem usar o Pré-app. |
 | **Acerto de 90% do dev** | É uma meta. Nenhum agente acerta todas as vezes. | Barreiras da seção 8.1. |
 
 ## 11. Pendências com o dono
 
-1. Dizer se tem assento pago no Figma, para a etapa opcional de envio das telas.
-2. Criar o repositório novo e liberar o acesso a ele.
-3. Escolher o pacote de pixel art.
-4. Escolher a hospedagem do painel e do armazenamento de evidências.
-5. Escolher o nome definitivo do produto. "Esteira" é provisório.
-6. Pedir a confirmação à Anthropic antes de abrir para outras contas.
+1. Criar à mão o repositório do próprio produto e liberar o acesso a ele, antes da etapa 2. O Pré-app ainda não existe para fazer isso.
+2. Escolher o pacote de pixel art.
+3. Escolher a hospedagem do painel e do armazenamento de evidências.
+4. Escolher o nome definitivo do produto. "Esteira" é provisório.
+5. Pedir a confirmação à Anthropic antes de abrir para outras contas.
 
 ## 12. Fontes
 

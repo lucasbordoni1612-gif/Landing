@@ -117,6 +117,7 @@ Medidas que entram na primeira versão, da mais barata de fazer para a mais trab
 | **Teto por execução** | Cada menu tem um limite de rodadas do agente. Ao atingir, ele para e reporta. |
 | **Nível de esforço por módulo** | Além do modelo, o módulo define o esforço de raciocínio. Tarefas simples rodam com esforço baixo. |
 | **Mapa do repositório** | Um índice do código, gerado uma vez e atualizado a cada MR, que o agente consulta em vez de ler arquivos. O Graphify é o candidato; ele ajuda na leitura, não na edição. |
+| **Navegador econômico** | O agente lê a página como uma lista compacta de elementos, em vez do HTML inteiro. Candidatos: `playwright-cli` (Microsoft) e `agent-browser` (Vercel Labs, Apache-2.0). Os dois fazem print e vídeo. A etapa 1 mede qual gasta menos no mesmo teste, e o módulo QA fica com o vencedor. |
 | **Consumo visível** | O painel mostra quanto cada menu e cada módulo gastou, para o dono ver onde cortar. |
 
 O ganho do Graphify precisa ser medido nos projetos do dono na etapa 1. O número divulgado, 71 vezes menos tokens, vem de um único teste num repositório grande; relatos de uso falam em 5 a 10 vezes na exploração, e o ganho é pequeno em repositórios com menos de 100 arquivos. A licença também precisa ser conferida no repositório dele.
@@ -276,7 +277,7 @@ O protótipo é entregue só por link. O dono não tem assento pago no Figma, en
 Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mudar o desenho:
 1. Claude Code oficial com token de assinatura rodando no GitHub Actions, com as skills carregadas e os eventos saindo em `stream-json`.
 2. O mesmo no GitLab CI, onde o token de assinatura não está documentado.
-3. Navegador em modo headless tirando prints e vídeo dentro do job.
+3. Navegador em modo headless tirando prints e vídeo dentro do job, comparando o consumo de tokens do `playwright-cli` com o do `agent-browser`.
 4. Criação de repositório pela conexão do usuário, no GitHub e no GitLab, para o módulo Pré-app.
 
 **Pronto quando:** uma execução de teste em cada provedor entrega eventos e prints num endpoint de teste, e um repositório novo é criado por API em cada um.

@@ -1,0 +1,52 @@
+# Copie para config.toml (o `credits-agent init` faz isso) e ajuste.
+# Segredos NUNCA ficam aqui: apenas os NOMES das variáveis de ambiente.
+
+[agent]
+data_dir = "data"                       # banco SQLite, relatórios, pacotes e logs
+company_profile = "company_profile.toml"
+
+[llm]
+model = "claude-opus-5-5"
+effort_extraction = "medium"   # leitura de páginas oficiais
+effort_discovery = "high"      # busca de novos programas
+effort_drafting = "high"       # rascunho das respostas
+effort_email = "medium"        # classificação de e-mails
+fallbacks = "default"          # fallback do servidor em caso de recusa ("" desliga)
+max_web_searches = 8           # buscas por execução diária
+
+[discovery]
+enabled = true
+seeds_file = "sources/seed_programs.toml"
+queries_per_day = 3            # as consultas giram a cada dia
+max_new_candidates_per_day = 15
+verify_interval_days = 1       # rechecagem das páginas oficiais (só chama o modelo se a página mudou)
+max_verifications_per_run = 80
+
+[fetch]
+user_agent = "CreditsDiscoveryAgent/0.1 (+automated research; respects robots.txt)"
+delay_seconds = 3.0            # intervalo mínimo entre requisições ao mesmo site
+
+[applications]
+auto_prepare = true            # cria rascunhos para programas elegíveis
+max_drafts_per_run = 5
+language = "English"           # idioma das respostas dos formulários
+auto_submit_approved = true    # envia na execução diária o que VOCÊ aprovou
+allow_email_submission = true  # só quando a página oficial pede inscrição por e-mail
+
+[email]                        # leitura (somente leitura) da caixa de entrada via IMAP
+enabled = false
+imap_host = "imap.gmail.com"
+imap_port = 993
+mailbox = "INBOX"
+lookback_days = 21
+user_env = "CREDITS_AGENT_IMAP_USER"
+password_env = "CREDITS_AGENT_IMAP_PASSWORD"   # no Gmail: senha de app
+trusted_authserv_id = "mx.google.com"          # servidor cujo DKIM/DMARC é confiável
+
+[smtp]                         # envio do relatório diário e de inscrições por e-mail
+enabled = false
+host = "smtp.gmail.com"
+port = 587
+user_env = "CREDITS_AGENT_SMTP_USER"
+password_env = "CREDITS_AGENT_SMTP_PASSWORD"
+notify_to_env = "CREDITS_AGENT_NOTIFY_TO"

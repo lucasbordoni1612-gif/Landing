@@ -1,0 +1,3 @@
+# Execução diária às 07:40 (horário do servidor). Ajuste os caminhos.
+# As variáveis secretas ficam em ~/.credits-agent.env (chmod 600), nunca no crontab.
+40 7 * * * cd /opt/credits-agent && set -a && . $HOME/.credits-agent.env && set +a && .venv/bin/credits-agent run-daily >> data/logs/cron.log 2>&1

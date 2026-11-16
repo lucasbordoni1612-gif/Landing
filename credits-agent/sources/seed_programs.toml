@@ -1,0 +1,173 @@
+# Páginas oficiais de programas conhecidos (ponto de partida).
+# Os valores, prazos e regras NÃO ficam aqui: o agente lê a página oficial e
+# extrai tudo com citação do texto. URLs quebradas ou que redirecionam para
+# fora do domínio oficial são sinalizadas no relatório.
+# official_domains: domínios da própria empresa (URL e remetentes de e-mail).
+
+[[program]]
+provider = "Amazon Web Services"
+name = "AWS Activate"
+category = "cloud"
+url = "https://aws.amazon.com/startups/credits"
+official_domains = ["aws.amazon.com", "amazon.com", "aws.com"]
+
+[[program]]
+provider = "Google Cloud"
+name = "Google for Startups Cloud Program"
+category = "cloud"
+url = "https://cloud.google.com/startup"
+official_domains = ["cloud.google.com", "google.com", "startup.google.com"]
+
+[[program]]
+provider = "Microsoft"
+name = "Microsoft for Startups"
+category = "cloud"
+url = "https://www.microsoft.com/en-us/startups"
+official_domains = ["microsoft.com", "startups.microsoft.com"]
+
+[[program]]
+provider = "NVIDIA"
+name = "NVIDIA Inception"
+category = "ai_api"
+url = "https://www.nvidia.com/en-us/startups/"
+official_domains = ["nvidia.com"]
+
+[[program]]
+provider = "Oracle"
+name = "Oracle for Startups"
+category = "cloud"
+url = "https://www.oracle.com/startup/"
+official_domains = ["oracle.com"]
+
+[[program]]
+provider = "DigitalOcean"
+name = "Hatch"
+category = "cloud"
+url = "https://www.digitalocean.com/hatch"
+official_domains = ["digitalocean.com"]
+
+[[program]]
+provider = "Cloudflare"
+name = "Cloudflare for Startups"
+category = "cloud"
+url = "https://www.cloudflare.com/forstartups/"
+official_domains = ["cloudflare.com"]
+
+[[program]]
+provider = "MongoDB"
+name = "MongoDB for Startups"
+category = "database"
+url = "https://www.mongodb.com/startups"
+official_domains = ["mongodb.com"]
+
+[[program]]
+provider = "Scaleway"
+name = "Scaleway Startup Program"
+category = "cloud"
+url = "https://www.scaleway.com/en/startup-program/"
+official_domains = ["scaleway.com"]
+
+[[program]]
+provider = "OVHcloud"
+name = "OVHcloud Startup Program"
+category = "cloud"
+url = "https://startup.ovhcloud.com/"
+official_domains = ["ovhcloud.com", "ovh.com"]
+
+[[program]]
+provider = "Vercel"
+name = "Vercel for Startups"
+category = "devtools"
+url = "https://vercel.com/startups"
+official_domains = ["vercel.com"]
+
+[[program]]
+provider = "GitHub"
+name = "GitHub for Startups"
+category = "devtools"
+url = "https://github.com/enterprise/startups"
+official_domains = ["github.com"]
+
+[[program]]
+provider = "Sentry"
+name = "Sentry for Startups"
+category = "observability"
+url = "https://sentry.io/for/startups/"
+official_domains = ["sentry.io"]
+
+[[program]]
+provider = "PostHog"
+name = "PostHog for Startups"
+category = "observability"
+url = "https://posthog.com/startups"
+official_domains = ["posthog.com"]
+
+[[program]]
+provider = "Notion"
+name = "Notion for Startups"
+category = "saas"
+url = "https://www.notion.so/startups"
+official_domains = ["notion.so", "notion.com", "makenotion.com"]
+
+[[program]]
+provider = "HubSpot"
+name = "HubSpot for Startups"
+category = "saas"
+url = "https://www.hubspot.com/startups"
+official_domains = ["hubspot.com"]
+
+[[program]]
+provider = "Intercom"
+name = "Intercom Early Stage"
+category = "saas"
+url = "https://www.intercom.com/early-stage"
+official_domains = ["intercom.com", "intercom.io"]
+
+[[program]]
+provider = "Atlassian"
+name = "Atlassian for Startups"
+category = "saas"
+url = "https://www.atlassian.com/software/startups"
+official_domains = ["atlassian.com"]
+
+[[program]]
+provider = "Zendesk"
+name = "Zendesk for Startups"
+category = "saas"
+url = "https://www.zendesk.com/startups/"
+official_domains = ["zendesk.com"]
+
+[[program]]
+provider = "Mixpanel"
+name = "Mixpanel for Startups"
+category = "observability"
+url = "https://mixpanel.com/startups"
+official_domains = ["mixpanel.com"]
+
+[[program]]
+provider = "Retool"
+name = "Retool for Startups"
+category = "devtools"
+url = "https://retool.com/startups"
+official_domains = ["retool.com"]
+
+[[program]]
+provider = "Auth0"
+name = "Auth0 for Startups"
+category = "devtools"
+url = "https://auth0.com/startups"
+official_domains = ["auth0.com", "okta.com"]
+
+[[program]]
+provider = "Miro"
+name = "Miro for Startups"
+category = "saas"
+url = "https://miro.com/startups/"
+official_domains = ["miro.com"]
+
+[[program]]
+provider = "ElevenLabs"
+name = "ElevenLabs Startup Grants"
+category = "ai_api"
+url = "https://elevenlabs.io/startup-grants"
+official_domains = ["elevenlabs.io"]

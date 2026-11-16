@@ -1,0 +1,10 @@
+[Unit]
+Description=Roda o credits agent todo dia
+
+[Timer]
+OnCalendar=*-*-* 07:40:00
+Persistent=true
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timers.target

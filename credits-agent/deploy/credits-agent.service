@@ -1,0 +1,9 @@
+[Unit]
+Description=Credits agent - execução diária
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/credits-agent
+EnvironmentFile=%h/.credits-agent.env
+ExecStart=/opt/credits-agent/.venv/bin/credits-agent run-daily

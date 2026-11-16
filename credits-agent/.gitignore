@@ -1,0 +1,9 @@
+# Dados reais da empresa, banco e relatórios nunca vão para o git
+company_profile.toml
+config.toml
+data/
+.env
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.venv/

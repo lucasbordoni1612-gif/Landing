@@ -1,0 +1,129 @@
+# Perfil da empresa. Copie para company_profile.toml (o `init` faz isso).
+# Este arquivo está no .gitignore: ele NUNCA deve ir para o repositório.
+#
+# Regra de ouro: o agente só usa campos com `verified = true`.
+# Marque como verificado apenas o que você conferiu num documento oficial e
+# diga qual em `source` (ex.: "Cartão CNPJ", "Contrato social", "Extrato bancário").
+# Campos não verificados são tratados como desconhecidos: o agente pergunta a você.
+
+[legal_name]
+value = "Exemplo Tecnologia Ltda"
+verified = false
+source = "Cartão CNPJ (Receita Federal)"
+verified_at = 2026-11-01
+
+[trade_name]
+value = "Exemplo"
+verified = false
+source = ""
+
+[tax_id]
+value = "00.000.000/0001-00"
+verified = false
+source = "Cartão CNPJ"
+
+[country]
+value = "BR"
+verified = false
+source = "Contrato social"
+
+[state]
+value = "SP"
+verified = false
+
+[city]
+value = "São Paulo"
+verified = false
+
+[founded_date]
+value = 2024-03-15
+verified = false
+source = "Cartão CNPJ (data de abertura)"
+
+[is_incorporated]
+value = true
+verified = false
+source = "Cartão CNPJ"
+
+[website]
+value = "https://exemplo.com.br"
+verified = false
+source = "Registro.br"
+
+[email_domain]
+value = "exemplo.com.br"
+verified = false
+
+[contact_name]
+value = "Nome Sobrenome"
+verified = false
+
+[contact_email]
+value = "fundador@exemplo.com.br"
+verified = false
+
+[contact_role]
+value = "CEO"
+verified = false
+
+[company_linkedin]
+value = ""
+verified = false
+
+[employees]
+value = 4
+verified = false
+source = "Folha / contratos"
+
+[stage]
+value = "pre_seed"          # idea | pre_seed | seed | series_a | series_b | series_c_plus
+verified = false
+
+[total_funding_usd]
+value = 0                   # 0 = bootstrapped
+verified = false
+source = "Contratos de investimento"
+
+[annual_revenue_usd]
+value = 0
+verified = false
+
+[investors]
+value = []                  # lista vazia verificada = "não temos investidores"
+verified = false
+
+[accelerators]
+value = []
+verified = false
+
+[industry]
+value = "SaaS B2B"
+verified = false
+
+[product_description_short]
+value = "Descreva seu produto em 1-2 frases, em inglês se os formulários forem em inglês."
+verified = false
+
+[product_description_long]
+value = ""
+verified = false
+
+[credits_use_case]
+value = "Explique como usará os créditos (ex.: inferência de LLM para o recurso X, hospedagem da API)."
+verified = false
+
+[tech_stack]
+value = ["Python", "PostgreSQL"]
+verified = false
+
+[product_live]
+value = true
+verified = false
+
+[github_org]
+value = ""
+verified = false
+
+[previous_programs]
+value = []                  # programas de créditos que a empresa JÁ recebeu (evita duplicidade)
+verified = false

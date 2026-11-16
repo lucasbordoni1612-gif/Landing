@@ -269,6 +269,16 @@ Os quatro módulos abaixo saem na primeira versão. O dono pode acrescentar skil
 
 **Arte.** Pacote profissional de pixel art comprado, sem arte gerada por IA. A referência mais próxima é o Pixel Agents, uma extensão do VS Code que mostra agentes do Claude Code num escritório em pixel art.
 
+## 6.1 Linguagem para iniciantes
+
+O produto precisa ser entendido por quem não é de TI.
+
+- **Linguagem simples como padrão** em todas as telas que o cliente usa. Exemplos: "pedido" em vez de MR ou PR, "pronto para ir para o app" em vez de merge, "uso da assinatura" em vez de tokens, "habilidades" em vez de skills.
+- **Termos técnicos sob demanda**: um ícone "?" ao lado do termo explica e mostra o nome técnico, para quem é de TI encontrar o que procura.
+- **Escolhas técnicas escondidas**: o modelo (Opus ou Fable) é escolhido automaticamente e só aparece em "Opções avançadas".
+- **Código recolhido**: diffs e arquivos aparecem só depois de um resumo em português e um clique em "Ver o código".
+- **Exceções**: o Estúdio de módulos e a Administração podem usar termos técnicos, porque só o dono usa.
+
 ## 7. Etapas da primeira versão
 
 A ordem coloca primeiro o protótipo para os sócios e, logo depois, a prova das partes tecnicamente incertas.

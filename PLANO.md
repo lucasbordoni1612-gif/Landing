@@ -15,6 +15,7 @@ Versão de 15/11/2026. Este documento registra as decisões já tomadas e o cami
 2. Escolhe módulos no catálogo e escreve o que quer, criando um menu (exemplo: módulo QA + "teste toda a funcionalidade").
 3. Decide onde o menu roda: manual, num projeto ou em todos.
 4. Acompanha a execução ao vivo no escritório e aprova ou reprova quando for chamada.
+5. Para pedir uma funcionalidade nova, escolhe o app e clica em "Pedir uma mudança" (seção 6.2).
 
 ## 2. Vocabulário
 
@@ -190,7 +191,7 @@ Todas as execuções de uma conta consomem a mesma assinatura Claude. Com vária
 
 ## 5. Módulos padrão
 
-Os quatro módulos abaixo saem na primeira versão. O dono pode acrescentar skills a qualquer momento pelo estúdio.
+Os seis módulos abaixo saem na primeira versão. O dono pode acrescentar skills a qualquer momento pelo estúdio.
 
 ### 5.1 QA (leitura)
 
@@ -240,7 +241,28 @@ Os quatro módulos abaixo saem na primeira versão. O dono pode acrescentar skil
 
 **Como roda.** A criação do repositório é feita pela própria plataforma, usando a conexão do usuário, porque nesse momento ainda não existe uma CI onde rodar. Os passos seguintes já rodam na CI do repositório novo.
 
-**O que não faz.** Não escreve o app. Isso é o Criador de Apps (seção 8.3), que parte do repositório preparado pelo Pré-app.
+**O que não faz.** Não escreve o app. Isso é o Criador de Apps (seção 8.2), que parte do repositório preparado pelo Pré-app.
+
+### 5.5 Dev e Tech Lead (desenvolvimento)
+
+**O que é.** Módulos com permissão de desenvolvimento. O **Dev** constrói o que foi pedido e corrige o que o QA barrar. O **Tech Lead** revisa legibilidade e manutenção antes do merge. Os dois usam Fable por padrão.
+
+**Como funciona:**
+- O agente faz commits direto na branch do MR, com identidade de bot. O cliente liga essa permissão explicitamente no menu.
+- Um MR ou uma issue só com a descrição funciona como pedido: a Esteira Dev implementa dentro dele.
+- O módulo corrige e revalida dentro da própria execução, e só faz push quando tudo passou.
+
+**Barreiras de qualidade:**
+1. **Definição de pronto.** Antes do push: build e testes passam, as validações de QA passam, e o módulo Tech Lead aprova a legibilidade e a manutenção.
+2. **Barreira de publicação.** O módulo só é publicado depois de uma bateria de tarefas reais no estúdio, com pelo menos 90% de acerto de primeira.
+3. **Freio.** Três rodadas de correção no máximo. Na quarta, o QA escreve a correção exata, o dev aplica e o QA testa de novo de verdade.
+4. **Último recurso.** Se ainda falhar, o MR fica bloqueado e o dono da conta recebe um aviso em linguagem simples, com os botões "Tentar de outro jeito", "Simplificar o pedido" e "Pedir ajuda".
+
+Cada caso que chega ao freio conta como defeito do módulo e pesa na "taxa de acerto de primeira", visível no estúdio. Na esteira de um dev humano não há limite: o QA pode barrar quantas vezes for preciso.
+
+**Por que entrou na primeira versão.** Sem ele, quem não tem dev na equipe não consegue receber uma funcionalidade pronta, e o público iniciante é prioridade.
+
+**Depende de:** o módulo QA confiável o bastante para servir de juiz. Por isso o Dev é construído logo depois do QA (etapa 8).
 
 ## 6. Painel ao vivo: o escritório
 
@@ -279,6 +301,16 @@ O produto precisa ser entendido por quem não é de TI.
 - **Código recolhido**: diffs e arquivos aparecem só depois de um resumo em português e um clique em "Ver o código".
 - **Exceções**: o Estúdio de módulos e a Administração podem usar termos técnicos, porque só o dono usa.
 
+## 6.2 Meus apps e pedidos de mudança
+
+Quem tem mais de um app precisa saber onde pedir cada coisa, sem abrir o GitHub ou o GitLab.
+
+- **Seletor de app** no topo do menu lateral. Ao escolher um app, Início, Ao vivo e Esteiras mostram só esse app.
+- **Botão "Pedir uma mudança"** sempre visível. A pessoa escolhe o app, descreve o que quer com suas palavras e escolhe quem constrói: o módulo Dev ou alguém da equipe.
+- **A plataforma cria o pedido sozinha** (o MR ou PR vazio, com a descrição) no repositório daquele app, e a esteira começa pelo Design.
+- **Visão de todos os apps** no Início, com o status de cada um ("1 pedido esperando você", "tudo certo").
+- Pedidos em apps diferentes andam ao mesmo tempo, cada um no corredor do seu app.
+
 ## 7. Etapas da primeira versão
 
 A ordem coloca primeiro o protótipo para os sócios e, logo depois, a prova das partes tecnicamente incertas.
@@ -289,7 +321,8 @@ A ordem coloca primeiro o protótipo para os sócios e, logo depois, a prova das
 2. O dono escolhe uma.
 3. Protótipo navegável da experiência completa, aberto por link no navegador:
    - Primeira versão inteira: Conexões, catálogo, estúdio de módulos, criação de menu, esteira, Pré-app, escritório ao vivo com uma execução simulada, administração e o Orquestrador.
-   - Uma ou duas telas de cada parte futura, marcadas "em breve": Criador de Apps, Ads, esteiras Dev e Tech Lead.
+   - Uma ou duas telas de cada parte futura, marcadas "em breve": Criador de Apps e Ads.
+   - Seletor de apps e o botão "Pedir uma mudança".
 
 O protótipo é entregue só por link. O dono não tem assento pago no Figma, então não há envio das telas para lá.
 
@@ -352,6 +385,7 @@ Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mu
 - Esteira: menus em ordem, ligados a repositórios.
 - Sincronização com a CI e disparo manual pelo painel.
 - Pausa para aprovação, como descrito na seção 4.3.
+- Seletor de apps e o botão "Pedir uma mudança", que cria o pedido no repositório do app (seção 6.2).
 
 **Pronto quando:** um MR aberto num projeto conectado dispara a esteira sozinho, na ordem certa.
 
@@ -365,7 +399,16 @@ Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mu
 
 **Pronto quando:** QA, UX e Design rodam num projeto real do dono com relatórios que fazem sentido para quem não é técnico, e o Pré-app entrega um repositório novo já com a esteira funcionando.
 
-### Etapa 8: escritório ao vivo
+### Etapa 8: Dev e Tech Lead
+
+- Módulo Dev: implementa o pedido dentro do MR, corrige e revalida antes do push, sem push forçado.
+- Módulo Tech Lead: revisão de legibilidade e manutenção, que faz parte da definição de pronto.
+- Freio de 3 rodadas, correção escrita pelo QA na quarta e aviso em linguagem simples no último recurso.
+- Bateria de tarefas reais no estúdio, com meta de 90% de acerto de primeira antes de publicar.
+
+**Pronto quando:** um pedido escrito só com a descrição, num projeto real do dono, chega aprovado pelo QA e pelo Tech Lead sem ajuda humana, e a bateria passa de 90%.
+
+### Etapa 9: escritório ao vivo
 
 - Visão Lista completa.
 - Escritório: corredor, mesas, personagens, as cinco animações e o mapeamento da seção 6.
@@ -373,7 +416,7 @@ Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mu
 
 **Pronto quando:** dá para acompanhar uma execução real do começo ao fim só olhando o escritório.
 
-### Etapa 9: Orquestrador
+### Etapa 10: Orquestrador
 
 - Instaladores para Mac, Windows e Linux, gerados juntos.
 - Login na plataforma, registro do runner oficial, início automático e ícone de status.
@@ -383,7 +426,7 @@ Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mu
 
 **Pronto quando:** num computador limpo, baixar, abrir e fazer login basta para uma execução rodar localmente.
 
-### Etapa 10: administração e fechamento
+### Etapa 11: administração e fechamento
 
 - Painel de administração da plataforma.
 - Papéis da organização e convite de leitores.
@@ -394,38 +437,19 @@ Um repositório de teste, sem painel, para tirar as quatro dúvidas que podem mu
 
 ## 8. O que vem depois (resumo)
 
-### 8.1 Módulos de desenvolvimento e esteiras Dev e Tech Lead
-
-**O que é.** Módulos com permissão de desenvolvimento, que alteram o código do MR para aplicar as correções.
-
-**Como funciona:**
-- O agente faz commits direto na branch do MR, com identidade de bot. O cliente liga essa permissão explicitamente no menu.
-- Um MR ou uma issue só com a descrição funciona como pedido: a Esteira Dev implementa dentro dele.
-- O módulo corrige e revalida dentro da própria execução, e só faz push quando tudo passou.
-
-**Barreiras de qualidade:**
-1. **Definição de pronto.** Antes do push: build e testes passam, as validações de QA passam, e o módulo Tech Lead aprova a legibilidade e a manutenção.
-2. **Barreira de publicação.** O módulo só é publicado depois de uma bateria de tarefas reais no estúdio, com pelo menos 90% de acerto de primeira.
-3. **Freio.** Três rodadas de correção no máximo. Na quarta, o QA escreve a correção exata, o dev aplica e o QA testa de novo de verdade.
-4. **Último recurso.** Se ainda falhar, o MR fica bloqueado e o dono da conta recebe um aviso em linguagem simples, com os botões "Tentar de outro jeito", "Simplificar o pedido" e "Pedir ajuda".
-
-Cada caso que chega ao freio conta como defeito do módulo e pesa na "taxa de acerto de primeira", visível no estúdio. Na esteira de um dev humano não há limite: o QA pode barrar quantas vezes for preciso.
-
-**Depende de:** primeira versão rodando, e o módulo QA confiável o bastante para servir de juiz.
-
-### 8.2 Módulos avulsos (Ads)
+### 8.1 Módulos avulsos (Ads)
 
 **O que é.** Módulos ligados ao projeto, mas fora da esteira de desenvolvimento, disparados sob demanda pelo painel.
 
 **Depende de:** definir o que o módulo de Ads entrega e para onde.
 
-### 8.3 Criador de Apps
+### 8.2 Criador de Apps
 
 **O que é.** Um módulo para quem não tem vivência com tecnologia: a pessoa descreve o app, o Pré-app prepara o repositório e os menus, e o Criador de Apps desenvolve o app em cima disso.
 
-**Depende de:** o Pré-app da primeira versão, módulos de desenvolvimento estáveis e uma forma de a pessoa ver o app rodando sem configurar nada. Precisa ser simples e intuitivo.
+**Depende de:** o Pré-app e os módulos Dev e Tech Lead da primeira versão e uma forma de a pessoa ver o app rodando sem configurar nada. Precisa ser simples e intuitivo.
 
-### 8.4 Outros itens adiados
+### 8.3 Outros itens adiados
 
 - GitHub Enterprise Server.
 - Módulos privados de uma organização e marketplace de terceiros.
@@ -445,13 +469,13 @@ Cada caso que chega ao freio conta como defeito do módulo e pesa na "taxa de ac
 | **Token de assinatura no GitLab** | A integração oficial do GitLab (em beta) só documenta chave de API, Bedrock e Vertex. | Testar na etapa 1. Se não funcionar, o GitLab fica só pelo Orquestrador ou espera a chave de API. |
 | **Limite compartilhado** | O token fica preso à assinatura de quem o gerou. Um time inteiro disparando execuções consome o limite de uma pessoa e volta à zona cinzenta dos termos. | Primeira versão restrita aos projetos e MRs do dono. |
 | **Minutos de CI** | GitHub Free: 2.000 minutos por mês em repositório privado. GitLab.com Free: 400 por mês. Os números não vieram das páginas de preço atuais. Uma execução com navegador deve levar de 10 a 30 minutos (estimativa). | O Orquestrador é o caminho sem custo. |
-| **Isolamento nos três sistemas** | Instalar e gerenciar um runtime de contêiner em Mac, Windows e Linux é a parte mais difícil do Orquestrador. | Tratar como o maior item da etapa 9. |
+| **Isolamento nos três sistemas** | Instalar e gerenciar um runtime de contêiner em Mac, Windows e Linux é a parte mais difícil do Orquestrador. | Tratar como o maior item da etapa 10. |
 | **Escrita no Figma** | Só pelo servidor MCP remoto do Figma, com login interativo, assento pago e recurso em beta que passará a ser cobrado por uso. Parte disso veio de trechos de busca, não de leitura direta. | Protótipo navegável como padrão; Figma opcional. |
 | **App sem assinatura digital** | Bloqueio no macOS, aviso no Windows e possível falso positivo de antivírus. | Aceitável para uso do dono; resolver antes de abrir. |
 | **Skills de terceiros** | Rodam dentro da pipeline do cliente. As escolhidas são MIT ou Apache-2.0; as do Figma não têm licença aberta. | Versão fixada e revisão antes de publicar. |
 | **Evidências** | Prints e eventos passam pelos servidores da plataforma, mesmo com o código ficando no cliente. | Retenção de 30 dias e aviso claro na tela Conexões. |
 | **Permissão para criar repositórios** | O Pré-app precisa que a conexão do usuário permita criar repositórios, o que amplia o acesso pedido no GitHub e no GitLab. | Confirmar na etapa 1 e pedir essa permissão só a quem usar o Pré-app. |
-| **Acerto de 90% do dev** | É uma meta. Nenhum agente acerta todas as vezes. | Barreiras da seção 8.1. |
+| **Acerto de 90% do dev** | É uma meta. Nenhum agente acerta todas as vezes. | Barreiras da seção 5.5. |
 
 ## 11. Pendências com o dono
 

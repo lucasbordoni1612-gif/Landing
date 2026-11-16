@@ -13,7 +13,7 @@ Vai para o Fable o que tem pelo menos uma destas características:
 ## Esforço recomendado
 
 - **Padrão: alto (high).** É o ponto de partida indicado para o Fable; acima disso o ganho é irregular.
-- **Extra (xhigh)** só em dois lugares, onde um erro passa despercebido por mais tempo: a etapa 1 (prova técnica) e o isolamento do Orquestrador na etapa 9.
+- **Extra (xhigh)** só em dois lugares, onde um erro passa despercebido por mais tempo: a etapa 1 (prova técnica) e o isolamento do Orquestrador na etapa 10.
 - **Médio não é recomendado aqui.** Estas são justamente as partes em que economizar raciocínio sai caro.
 
 ## Partes
@@ -54,7 +54,11 @@ O programa que roda o Claude Code oficial dentro do job, traduz eventos em passo
 
 Essas três definem a assertividade do QA e do UX. A bateria de testes que mede o acerto também fica aqui.
 
-### Etapa 9: Orquestrador (isolamento e runner)
+### Etapa 8: Dev e Tech Lead (inteira)
+
+Os módulos que escrevem e revisam código no repositório do cliente, com meta de 90% de acerto de primeira. Inclui as instruções, o freio de rodadas e a bateria de testes do estúdio.
+
+### Etapa 10: Orquestrador (isolamento e runner)
 
 - Instalação e gerência do runtime de contêiner em Mac, Windows e Linux.
 - Registro e ciclo de vida do runner oficial.
@@ -64,4 +68,4 @@ Essas três definem a assertividade do QA e do UX. A bateria de testes que mede 
 
 ## Depois da primeira versão
 
-Os módulos de desenvolvimento (seção 8.1 do plano) ficam inteiros com o Fable: escrevem código no repositório do cliente e precisam atingir 90% de acerto de primeira.
+A parte do Criador de Apps que escreve o app inteiro fica com o Fable.

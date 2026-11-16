@@ -20,7 +20,7 @@ Vai para o Opus o que tem estas características:
 O Fable entra antes do Opus em três pontos, porque o Opus constrói em cima do que ele define:
 1. Etapa 1 inteira (Fable), antes de qualquer código do produto.
 2. Desenho da etapa 2 (Fable), depois a implementação (Opus).
-3. Etapa 4 inteira (Fable), antes da etapa 8 (Opus), que consome o formato de evento.
+3. Etapa 4 inteira (Fable), antes da etapa 9 (Opus), que consome o formato de evento.
 
 A etapa 0 (protótipo) é do Opus e não depende de nada disso.
 
@@ -56,6 +56,7 @@ O resultado é conferido pelo dono a olho, então um erro não passa despercebid
 ### Etapa 6: menus e esteiras (telas)
 
 - Criação de menu e escolha do modo.
+- Seletor de apps e o botão "Pedir uma mudança".
 - Montagem da esteira e ligação com repositórios.
 
 ### Etapa 7: módulos padrão (montagem)
@@ -64,7 +65,7 @@ O resultado é conferido pelo dono a olho, então um erro não passa despercebid
 - Módulo Pré-app.
 - Botões de aprovação do UX e do Design.
 
-### Etapa 8: escritório ao vivo (inteira)
+### Etapa 9: escritório ao vivo (inteira)
 
 - Visão Lista.
 - Escritório em pixel art: corredor, mesas, personagens e as cinco animações.
@@ -72,13 +73,13 @@ O resultado é conferido pelo dono a olho, então um erro não passa despercebid
 
 Consome o formato de evento definido pelo Fable na etapa 4.
 
-### Etapa 9: Orquestrador (casca do app)
+### Etapa 10: Orquestrador (casca do app)
 
 - Janela, login, ícone na barra do sistema e início automático.
 - Geração dos instaladores para os três sistemas.
 - Link de download no painel.
 
-### Etapa 10: administração e fechamento (inteira)
+### Etapa 11: administração e fechamento (inteira)
 
 - Painel de administração da plataforma.
 - Papéis e convites.
@@ -86,4 +87,4 @@ Consome o formato de evento definido pelo Fable na etapa 4.
 
 ## Depois da primeira versão
 
-O módulo de Ads e as telas do Criador de Apps podem ficar com o Opus. A parte do Criador de Apps que escreve o app depende dos módulos de desenvolvimento, que são do Fable.
+O módulo de Ads e as telas do Criador de Apps podem ficar com o Opus. A parte do Criador de Apps que escreve o app fica com o Fable.
